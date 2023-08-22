@@ -1,4 +1,3 @@
-// Clase Reglas
 public class Reglas {
 
     public static boolean[][] aplicarReglas(boolean[][] actual) {
@@ -9,21 +8,17 @@ public class Reglas {
                 int vecinos = contarVecinos(actual, i, j);
 
                 if (actual[i][j]) {
-                    // Regla de subpoblación
-                    if (vecinos < 2) {
+                    if (vecinos < 2) { //Se establece la regla de subpoblacion
                         generacion[i][j] = false;
                     }
-                    // Regla de sobrepoblación
-                    else if (vecinos > 3) {
+                    else if (vecinos > 3) { //Se establece la regla de sobrepoblacion
                         generacion[i][j] = false;
                     }
-                    // La célula sobrevive
                     else {
-                        generacion[i][j] = true;
+                        generacion[i][j] = true; //Se establece la regla de superviviencia
                     }
                 } else {
-                    // Regla de reproducción
-                    if (vecinos == 3) {
+                    if (vecinos == 3) { //Se establece la regla de revivir
                         generacion[i][j] = true;
                     }
                 }

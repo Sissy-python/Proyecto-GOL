@@ -6,7 +6,7 @@ public class Tablero {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Eligue el ancho de tu tablero:");
+        System.out.println("Elige el ancho de tu tablero:");
         System.out.println("1. 10");
         System.out.println("2. 20");
         System.out.println("3. 40");
@@ -14,23 +14,20 @@ public class Tablero {
         int opcionAncho = scanner.nextInt();
 
         int ancho = 0;
-        switch (opcionAncho) {
-            case 1:
-                ancho = 10;
-                break;
-            case 2:
-                ancho = 20;
-                break;
-            case 3:
-                ancho = 40;
-                break;
-            case 4:
-                ancho = 80;
-                break;
-            default:
-                System.out.println("No es un numero valido, por defecto sera: 20");
-                ancho = 20;
+        //switch (opcionAncho) {
+        if (opcionAncho == 1) { //Se dan opcines para el ancho y manda a poner esas medidas a la matiz
+            ancho = 10;
+        } else if (opcionAncho == 2) {
+            ancho = 20;
+        } else if (opcionAncho == 3) {
+            ancho = 40;
+        } else if (opcionAncho == 4) {
+            ancho = 80;
+        } else {
+            System.out.println("Opción inválida. El programa se detendrá.");
+            System.exit(0); // esta parte sirve para que si el usuario no pone un numero valido se detenga el programa
         }
+
 
         System.out.println("Ahora eligue la altua de tu tablero:");
         System.out.println("1. 10");
@@ -39,19 +36,16 @@ public class Tablero {
         int opcionAlto = scanner.nextInt();
 
         int alto = 0;
-        switch (opcionAlto) {
-            case 1:
-                alto = 10;
-                break;
-            case 2:
-                alto = 20;
-                break;
-            case 3:
-                alto = 40;
-                break;
-            default:
-                System.out.println("Numero no valido, por defecto sera: 20");
-                alto = 20;
+        //switch (opcionAlto) {
+        if (opcionAlto == 1) { //Se dan opcines para el alto y manda a poner esas medidad a la matiz
+            alto = 10;
+        } else if (opcionAlto == 2) {
+            alto = 20;
+        } else if (opcionAlto == 3) {
+            alto = 40;
+        } else {
+            System.out.println("Numero no valido, el programa se detendra");
+            System.exit(0);
         }
 
         boolean[][] generacionActual = new boolean[alto][ancho];
@@ -72,16 +66,14 @@ public class Tablero {
             System.out.println("2. 1000");
             int opcionIntervalo = scanner.nextInt();
 
-            switch (opcionIntervalo) {
-                case 1:
-                    intervalo = 250;
-                    break;
-                case 2:
-                    intervalo = 1000;
-                    break;
-                default:
-                    System.out.println("Tu numero no es correcto, por facor eligue entre 1 y 2");
+            if (opcionIntervalo == 1) {
+                intervalo = 250;
+            } else if (opcionIntervalo == 2) {
+                intervalo = 1000;
+            } else {
+                System.out.println("Tu numero no es correcto, por facor eligue entre 1 y 2");
             }
+
         } while (intervalo == 0);
 
         for (int generacion = 0; generacion < numGeneraciones || numGeneraciones == 0; generacion++) {
@@ -102,7 +94,7 @@ public class Tablero {
     }
 
     public static void limpiarConsola() {
-        System.out.print("\033[H\033[2J");
+        System.out.print("\033[H\033[2J"); //Esta parte da la ilucion de que las celulas de la matriz anterior se borra y aparace la nueva generacion
         System.out.flush();
     }
 
@@ -115,4 +107,3 @@ public class Tablero {
         }
     }
 }
-
